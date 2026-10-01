@@ -1,0 +1,319 @@
+/* =========================================================
+   MOVIE DETAILS — MODERN EMERALD TEAL & MINT THEME
+   Targets dynamic HTML injected by movie-details.js
+   ========================================================= */
+
+/* Main Details Wrapper Container */
+#movie-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 850px) {
+    #movie-detail {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3.5rem;
+    }
+}
+
+/* ---------------------------------------------------------
+   LEFT COLUMN: Movie Poster Wrapper & Image
+   --------------------------------------------------------- */
+#movie-detail > div:first-child {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    flex-shrink: 0;
+    position: relative;
+}
+
+#movie-detail > div:first-child img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.12),
+                0 10px 15px -5px rgba(16, 185, 129, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    cursor: pointer;
+}
+
+/* POSTER HOVER: Emerald Green Border & Mint Glow */
+#movie-detail > div:first-child img:hover {
+    transform: scale(1.03) translateY(-4px);
+    border-color: #10b981;
+    box-shadow: 0 25px 35px -10px rgba(16, 185, 129, 0.25),
+                0 12px 20px -5px rgba(16, 185, 129, 0.12);
+}
+
+/* ---------------------------------------------------------
+   RIGHT COLUMN: Movie Info Container
+   --------------------------------------------------------- */
+#movie-detail > div:last-child {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+/* Title <h2> */
+#movie-detail h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: #0f172a;
+}
+
+@media (min-width: 640px) {
+    #movie-detail h2 {
+        font-size: 3.25rem;
+    }
+}
+
+/* ---------------------------------------------------------
+   Meta Pills Section (Released, Rated, Runtime, Genre, Rating)
+   --------------------------------------------------------- */
+#movie-detail > div:last-child > section:first-of-type {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Individual Meta Pills (Date, Rating, Runtime, Genre) */
+#movie-detail > div:last-child > section:first-of-type p {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 0.45rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #334155;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+/* HOVER: Emerald Green Background with Forest Green Border */
+#movie-detail > div:last-child > section:first-of-type p:hover {
+    background-color: #10b981;
+    border-color: #059669;
+    color: #ffffff;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 18px -4px rgba(16, 185, 129, 0.35);
+}
+
+/* IMDb Rating Pill (Yellow Badge) */
+#movie-detail > div:last-child > section:first-of-type p:last-child {
+    background-color: #fef9c3;
+    border-color: #fde047;
+    color: #854d0e;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#movie-detail > div:last-child > section:first-of-type p:last-child::before {
+    content: "★";
+    color: #ca8a04;
+    transition: transform 0.3s ease;
+}
+
+/* HOVER: Classic Gold Highlight */
+#movie-detail > div:last-child > section:first-of-type p:last-child:hover {
+    background-color: #f5c518;
+    border-color: #e2b616;
+    color: #000000;
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 8px 20px rgba(245, 197, 24, 0.45);
+}
+
+#movie-detail > div:last-child > section:first-of-type p:last-child:hover::before {
+    color: #000000;
+    transform: rotate(72deg) scale(1.2);
+}
+
+/* ---------------------------------------------------------
+   Plot Overview Box
+   --------------------------------------------------------- */
+#movie-detail > div:last-child > div:nth-of-type(1) {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+}
+
+/* HOVER: Mint Light Green Tint (#ecfdf5) & Green Border Accent */
+#movie-detail > div:last-child > div:nth-of-type(1):hover {
+    background-color: #ecfdf5;
+    border-color: #6ee7b7;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -6px rgba(16, 185, 129, 0.12),
+                0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+/* Heading: Plot Overview */
+#movie-detail > div:last-child > div:nth-of-type(1) p:first-child {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#movie-detail > div:last-child > div:nth-of-type(1) p:first-child::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background-color: #10b981;
+    border-radius: 2px;
+    transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+#movie-detail > div:last-child > div:nth-of-type(1):hover p:first-child::before {
+    height: 20px;
+    background-color: #059669;
+}
+
+/* Body: Plot Text */
+#movie-detail > div:last-child > div:nth-of-type(1) p:last-child {
+    color: #475569;
+    line-height: 1.75;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   Cast & Crew Grid Container
+   --------------------------------------------------------- */
+#movie-detail > div:last-child > div:nth-of-type(2) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#movie-detail > div:last-child > div:nth-of-type(2):hover {
+    border-color: #a7f3d0;
+    box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.08);
+}
+
+/* Individual Cast/Crew Cards Inside Grid */
+#movie-detail > div:last-child > div:nth-of-type(2) > * {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.85rem;
+    border: 1px solid transparent;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+}
+
+/* HOVER: Mint Green Background Highlight */
+#movie-detail > div:last-child > div:nth-of-type(2) > *:hover {
+    background-color: #ecfdf5;
+    border-color: #d1fae5;
+    transform: translateY(-2px) translateX(2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.06);
+}
+
+/* Field Label (e.g., DIRECTOR, ACTORS) */
+#movie-detail > div:last-child > div:nth-of-type(2) > * > p:first-child {
+    font-size: 0.725rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #94a3b8;
+    font-weight: 800;
+    transition: color 0.25s ease;
+}
+
+#movie-detail > div:last-child > div:nth-of-type(2) > *:hover > p:first-child {
+    color: #10b981;
+}
+
+/* Field Value */
+#movie-detail > div:last-child > div:nth-of-type(2) > * > p:last-child {
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Special spanning for Actors (3rd item) */
+#movie-detail > div:last-child > div:nth-of-type(2) > div:nth-child(3) {
+    grid-column: 1 / -1;
+}
+
+/* ---------------------------------------------------------
+   View on IMDb Button Styling
+   --------------------------------------------------------- */
+#movie-detail button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-top: 0.5rem;
+    align-self: flex-start;
+}
+
+#movie-detail button a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #f5c518;
+    color: #000000;
+    text-decoration: none;
+    padding: 0.9rem 2.25rem;
+    border-radius: 9999px;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 14px rgba(245, 197, 24, 0.35);
+}
+
+#movie-detail button a:hover {
+    background-color: #e2b616;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(245, 197, 24, 0.45);
+}
+
+#movie-detail button a:active {
+    transform: translateY(-1px);
+}

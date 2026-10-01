@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHub — Discover Movies & TV Shows</title>
+    <!-- Google Fonts: Plus Jakarta Sans for a premium UI feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 selection:bg-red-500 selection:text-white font-['Plus_Jakarta_Sans',sans-serif] antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Top Glow Effect -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-tr from-red-200/40 via-rose-100/30 to-amber-100/40 blur-3xl -z-10 pointer-events-none rounded-full"></div>
+
+    <!-- Glassmorphism Navbar -->
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/70 backdrop-blur-md shadow-xs">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3 cursor-pointer group">
+                <div class="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-md shadow-red-500/30 group-hover:scale-105 transition-transform duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v3h2.5l1.5-3H4zm4.5 0l-1.5 3h3l1.5-3H8.5zm5 0l-1.5 3h3l1.5-3h-3zm5 0l-1.5 3H20V6h-1.5zM4 11v7h16v-7H4z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight text-slate-900">Movie<span class="text-red-600">Hub</span></h1>
+                    <p class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest -mt-1">Explorer</p>
+                </div>
+            </div>
+
+            <!-- Mobile / Quick Menu Button -->
+            <div id="hamburger" class="cursor-pointer text-slate-600 hover:text-red-600 transition-colors p-2.5 rounded-xl hover:bg-slate-100/80 border border-transparent hover:border-slate-200">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Options Menu Popup -->
+        <div id="options" class="hidden absolute right-6 top-20 bg-white border border-slate-200 p-4 rounded-2xl shadow-xl w-56 text-slate-700 text-sm font-medium animate-in fade-in slide-in-from-top-2 duration-200">
+            <div class="p-2 border-b border-slate-100 mb-2">
+                <p class="font-bold text-slate-900">MovieHub v1.0</p>
+                <p class="text-xs text-slate-400">Powered by OMDb API</p>
+            </div>
+            <a href="#" class="block px-3 py-2 rounded-lg hover:bg-slate-50 transition-colors">⚡ Quick Search</a>
+            <a href="#" class="block px-3 py-2 rounded-lg hover:bg-slate-50 transition-colors">🔥 Trending Movies</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="pt-32 pb-16 flex-grow">
+        
+        <!-- Hero & Search Section -->
+        <section class="max-w-4xl mx-auto px-6 text-center">
+            
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200/60 text-red-700 text-xs font-semibold mb-6 shadow-xs">
+                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                Instant Movie & TV Series Lookup
+            </div>
+
+            <!-- Title -->
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-none mb-4">
+                Explore Millions of <br class="hidden sm:inline">
+                <span class="bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 bg-clip-text text-transparent">Movies & Shows.</span>
+            </h2>
+            
+            <p class="text-slate-500 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-medium">
+                Get ratings, cast details, release dates, and plot overviews instantly.
+            </p>
+
+            <!-- Search Form -->
+            <form class="mx-auto flex flex-col sm:flex-row gap-3 w-full max-w-2xl relative" id="movieForm" action="">
+                <div class="relative flex-grow">
+                    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input id="movieInput" type="text" 
+                        class="w-full bg-white border border-slate-300 text-slate-900 pl-12 pr-16 py-4 rounded-2xl focus:outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all placeholder:text-slate-400 font-medium shadow-sm" 
+                        placeholder="Search title (e.g. Inception, Shershaah, Matrix)...">
+                    
+                    <div class="hidden sm:flex absolute inset-y-0 right-4 items-center pointer-events-none">
+                        <kbd class="px-2 py-1 text-[10px] font-semibold text-slate-400 bg-slate-100 border border-slate-200 rounded-md">SEARCH</kbd>
+                    </div>
+                </div>
+
+                <button class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-red-600/25 active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+                    <span>Search</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </form>
+
+            <!-- Quick Suggestions Tags (Visual UX touch) -->
+            <div class="mt-6 flex items-center justify-center flex-wrap gap-2 text-xs font-medium text-slate-500">
+                <span class="text-slate-400 font-semibold">Popular:</span>
+                <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-slate-600 shadow-2xs">Inception</span>
+                <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-slate-600 shadow-2xs">Kill Bill</span>
+                <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-slate-600 shadow-2xs">Interstellar</span>
+                <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-slate-600 shadow-2xs">Shershaah</span>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="max-w-7xl mx-auto px-6 my-12">
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+        </div>
+
+        <!-- Movies Grid Container -->
+        <div class="max-w-7xl mx-auto px-6">
+            <div id="movieHub" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 min-h-[300px]">
+                <!-- JS Inject `.movie-card` elements or `.loader` here -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white/80 backdrop-blur-md py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 font-medium">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-900">MovieHub</span>
+                <span>• Designed for seamless movie discovery</span>
+            </div>
+            <p class="text-xs text-slate-400">Data provided by OMDb API</p>
+        </div>
+    </footer>
+
+    <script src="INDEX.JS"></script>
+</body>
+
+</html>
